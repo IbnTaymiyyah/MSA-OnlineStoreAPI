@@ -63,12 +63,12 @@ namespace OnlineStoreAPI.Controllers
 
         }
 
-        [HttpPut("{Id}")]
+        [HttpPut("{id}")]
         public async Task<ActionResult<Brand>> EditeBrand(int id, [FromBody] Brand UpdateBrand)
         {
             try
             {
-                if (id != UpdateBrand.Id)
+                if (id == null)
                 {
                     return BadRequest();
                 }
@@ -96,7 +96,7 @@ namespace OnlineStoreAPI.Controllers
         }
 
 
-        [HttpDelete("{Id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBrand(int id)
         {
             try

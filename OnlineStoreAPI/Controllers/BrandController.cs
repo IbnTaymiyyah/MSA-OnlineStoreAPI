@@ -41,20 +41,19 @@ namespace OnlineStoreAPI.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<Brand>> CreateBrand([FromBody] Brand Name , [FromBody] Brand Description)
+        public async Task<ActionResult<Brand>> CreateBrand([FromBody] Brand NewBrand )
         {
             try
             {
-                if (Name == null || Description == null)
+                if (NewBrand == null)
                 {
                     return BadRequest();
                 }
 
-                _db.Brands.Add(Name); // Saved In Memory
-                _db.Brands.Add(Description); // Saved In Memory 
+                _db.Brands.Add(NewBrand); // Saved In Memory 
                 await _db.SaveChangesAsync();  // Push to DB Table
 
-                return Ok(Name + " & " + Description + " : Added Successfully");
+                return Ok(NewBrand.Name + " : Added Successfully");
 
             }
             catch (Exception e)
@@ -76,10 +75,7 @@ namespace OnlineStoreAPI.Controllers
 
                 var getOldAData = await _db.Brands.FindAsync(id);
 
-                if (getOldAData == null)
-                {
-                    return NotFound();
-                }
+                
 
                 getOldAData.Name = UpdateBrand.Name;
                 getOldAData.Description = UpdateBrand.Description;
@@ -112,10 +108,7 @@ namespace OnlineStoreAPI.Controllers
 
                 var getData = await _db.Brands.FindAsync(id);
 
-                if (getData == null)
-                {
-                    return NotFound();
-                }
+              
 
 
                 _db.Brands.Remove(getData); // Saved In Memory 

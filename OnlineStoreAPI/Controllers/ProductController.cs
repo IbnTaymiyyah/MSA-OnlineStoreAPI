@@ -38,6 +38,28 @@ namespace OnlineStoreAPI.Controllers
                 return BadRequest(e.Message);
             }
         }
+        
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProduct(int id )
+        {
+            try
+            {
+
+                var getProduct = await _db.Products.FindAsync(id);
+               
+
+                if (getProduct == null)
+                {
+                    return NoContent();
+                }
+
+                return Ok(getProduct);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
 
 
 
@@ -73,7 +95,7 @@ namespace OnlineStoreAPI.Controllers
 
         }
 
-        [HttpPut("{Id}")]
+        [HttpPut("{id}")]
         public async Task<ActionResult<Product>> EditeProduct(int id, [FromBody] Product UpdateProduct)
         {
             try
@@ -117,7 +139,7 @@ namespace OnlineStoreAPI.Controllers
         }
 
 
-        [HttpDelete("{Id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
             try

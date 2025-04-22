@@ -1,6 +1,6 @@
 # OnlineStoreAPI
 
-#### This Online Store API provides a robust backend solution for managing an e-commerce platform. Developed as part of the Microsoft Student Accelerator program
+#### This project was created as an assignment for the Microsoft Student Ambassador program, focusing on the Backend of an "Online Store API".
 
 
 ---

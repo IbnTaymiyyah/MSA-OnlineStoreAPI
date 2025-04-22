@@ -66,7 +66,7 @@ namespace OnlineStoreAPI.Controllers
 
         }
 
-        [HttpPut("{Id}")]
+        [HttpPut("{id}")]
         public async Task<ActionResult<Categorie>> EditeCategorie(int id, [FromBody] Categorie UpdateCategorie)
         {
             try
@@ -100,7 +100,7 @@ namespace OnlineStoreAPI.Controllers
         }
         
         
-        [HttpDelete("{Id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategorie(int id)
         {
             try
